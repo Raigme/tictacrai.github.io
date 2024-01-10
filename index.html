@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe Game</title>
+  <link rel="stylesheet" href="yoo.css">
+</head>
+<body>
+  
+  <div class="container" id = "final">
+    <h1 id="tic">X Turn</h1>
+    <div id="gameBoard" class="game-board">
+      <div class="row">
+        <div class="cell" data-cell-index="0"></div>
+        <div class="cell" data-cell-index="1"></div>
+        <div class="cell" data-cell-index="2"></div>
+      </div>
+      <div class="row">
+        <div class="cell" data-cell-index="3"></div>
+        <div class="cell" data-cell-index="4"></div>
+        <div class="cell" data-cell-index="5"></div>
+      </div>
+      <div class="row">
+        <div class="cell" data-cell-index="6"></div>
+        <div class="cell" data-cell-index="7"></div>
+        <div class="cell" data-cell-index="8"></div>
+      </div>
+    </div>
+    <p id="gameStatus"></p>
+    <div name = "ag" id="restartButton"></div>
+  </div>
+  
+  <style>
+  body{
+    background: black
+  }
+    .container {
+  text-align: center;
+  margin-top: 50px;
+}
+#tic{
+  color:#A020F0;
+}
+
+.game-board {
+  display: inline-block;
+  border: 2px solid #333;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: black;
+}
+
+#gameStatus{
+  font-size: 30px;
+  font-weight:bold;
+  color: DeepSkyBlue
+  
+}
+
+.container{
+  position: relative;
+  top:80px;
+}
+  </style>
+
+  <script>
+    let cel = document.querySelectorAll(".cell")
+let ko = Array.from(cel)
+let a = 0
+let rmv = (h) => {
+  for (let y of ko) {
+    y.removeEventListener("click", g)
+  }
+}
+let g = (r) => {
+  
+    a++
+    console.log(a)
+    if (a % 2 == 0) {
+      r.target.innerHTML = "O"
+      r.target.style.color ="#EE4B2B"
+      tic.textContent = "X Turn"
+    }
+    else if( a % 2 != 0){
+      r.target.innerHTML = "X"
+      r.target.style.color = "#AAFF00"
+      tic.textContent = "O Turn"
+    }
+    
+    r.target.removeEventListener("click", g)
+    
+    let mpe = ko.map((t) => {
+      return t.innerHTML
+    })
+    
+    
+    // for X
+    
+    if (mpe[0] == "X" && mpe[4] == "X" && mpe[8] == "X") {
+      
+      setTimeout(()=>{
+         gameStatus.textContent = "X Won"
+         
+      },100)
+      rmv()
+    }
+    
+
+    else  if (mpe[0] == "X" && mpe[3] == "X" && mpe[6] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+      
+      },100)
+      rmv()
+    }
+    else if (mpe[0] == "X" && mpe[1] == "X" && mpe[2] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+      }, 100)
+      rmv()
+      
+    }
+
+    else if (mpe[1] == "X" && mpe[4] == "X" && mpe[7] == "X") {
+      setTimeout(()=>{
+         gameStatus.textContent = "X Won"
+         
+      },100)
+      rmv()
+    
+    }
+
+    else if (mpe[2] == "X" && mpe[5] == "X" && mpe[8] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+      }, 100)
+      rmv()
+      
+    }
+
+    else if (mpe[2] == "X" && mpe[4] == "X" && mpe[6] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+      }, 100)
+      rmv()
+      
+    }
+
+    else if (mpe[3] == "X" && mpe[4] == "X" && mpe[5] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+      }, 100)
+      rmv()
+      
+    }
+
+    else if (mpe[6] == "X" && mpe[7] == "X" && mpe[8] == "X") {
+      setTimeout(() => {
+        gameStatus.textContent = "X Won"
+        
+        
+      }, 100)
+      rmv()
+      
+    }
+   
+
+ 
+    else if (mpe[0] == "O" && mpe[4] == "O" && mpe[8] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+      
+    }
+    else if (mpe[0] == "O" && mpe[3] == "O" && mpe[6] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[0] == "O" && mpe[1] == "O" && mpe[2] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[1] == "O" && mpe[4] == "O" && mpe[7] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[2] == "O" && mpe[5] == "O" && mpe[8] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[2] == "O" && mpe[4] == "O" && mpe[6] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[4] == "O" && mpe[5] == "O" && mpe[6] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if (mpe[6] == "O" && mpe[7] == "O" && mpe[8] == "O") {
+      setTimeout(() => {
+        gameStatus.textContent = "O Won"
+        
+      }, 100)
+      rmv()
+    }
+    else if(a == 9){
+      setTimeout(() => {
+        gameStatus.textContent = "Draw"
+        
+      }, 100)
+    }
+    
+    
+}
+
+  
+
+ko.forEach((e) => {
+
+  
+  e.addEventListener("click", g)
+
+})
+
+
